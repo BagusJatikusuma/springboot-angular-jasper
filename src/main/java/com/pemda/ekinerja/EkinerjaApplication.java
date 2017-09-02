@@ -16,8 +16,11 @@ public class EkinerjaApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(EkinerjaApplication.class,args);
 
-		EmailApplication emailApplication = (EmailApplication) ctx.getBean("EmailApplication");
-		emailApplication.sendEmail();
+//		EmailApplication emailApplication = (EmailApplication) ctx.getBean("EmailApplication");
+//		emailApplication.sendEmail();
+//
+		ReportApplication reportApplication = (ReportApplication) ctx.getBean("ReportApplication");
+		reportApplication.createReport();
 	}
 
 }

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * Created by bagus on 29/08/17.
  */
 @Configuration
-public class BeanConfig {
+public class BeanSourceConfig {
 
     @Bean
     public EmailService emailService() {

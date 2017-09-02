@@ -15,6 +15,9 @@ public class Jabatan {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "salary")
+    private Long salary;
+
     @OneToMany(mappedBy = "jabatan", cascade = CascadeType.ALL)
     private List<Employee> employees;
 
@@ -23,10 +26,11 @@ public class Jabatan {
         this.id = id;
         this.name = name;
     }
-    public Jabatan(String id, String name, List<Employee> employees) {
+    public Jabatan(String id, String name, List<Employee> employees, Long salary) {
         this.id = id;
         this.name = name;
         this.employees = employees;
+        this.salary = salary;
     }
 
     public String getId() {
@@ -51,5 +55,13 @@ public class Jabatan {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    public Long getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Long salary) {
+        this.salary = salary;
     }
 }

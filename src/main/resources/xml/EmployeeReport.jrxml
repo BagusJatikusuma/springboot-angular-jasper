@@ -1,0 +1,153 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+        xmlns="http://jasperreports.sourceforge.net/jasperreports"
+        name="employee_report_template"
+        language="java"
+        pageHeight="842"
+        pageWidth="595"
+        columnWidth="555"
+        leftMargin="20"
+        rightMargin="20"
+        topMargin="30"
+        bottomMargin="30"
+        printOrder="Horizontal"
+>
+    <parameter name="title" class="java.lang.String"/>
+    <parameter name="report_description" class="java.lang.String"/>
+
+    <parameter name="header_column_id" class="java.lang.String"/>
+    <parameter name="header_column_name" class="java.lang.String"/>
+    <parameter name="header_column_birthday" class="java.lang.String"/>
+    <parameter name="header_column_address" class="java.lang.String"/>
+    <parameter name="header_column_jabatan" class="java.lang.String"/>
+    <parameter name="header_column_departement" class="java.lang.String"/>
+
+    <field name="id" class="java.lang.String"/>
+    <field name="name" class="java.lang.String"/>
+    <field name="birthday" class="java.util.Date"/>
+    <field name="location" class="java.lang.String"/>
+    <field name="jabatanName" class="java.lang.String"/>
+    <field name="departementName" class="java.lang.String"/>
+    
+    <title>
+        <band height="60">
+            <textField>
+                <reportElement
+                        x="0" y="0"
+                        width="555" height="30"
+                ></reportElement>
+                <textElement textAlignment="Center">
+                    <font size="17" fontName="Monospaced" pdfFontName="Times-Roman"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">$P{title}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement
+                        x="0" y="33"
+                        width="555" height="20"
+                ></reportElement>
+                <textElement textAlignment="Center">
+                    <font size="10" pdfFontName="Courier"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">$P{report_description}</textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="25">
+            <staticText>
+                <reportElement
+                        x="0" y="0"
+                        width="555" height="25"
+                        backcolor="#FFFFFF"/>
+                <box>
+                    <topPen lineWidth="1.0" lineColor="#000000"/>
+                    <bottomPen lineWidth="2.0" lineColor="#000000" />
+                </box>
+                <textElement />
+                <text></text>
+            </staticText>
+
+            <textField>
+                <reportElement x="0" y="0" width="50" height="25"></reportElement>
+                <textElement verticalAlignment="Middle" textAlignment="Center"/>
+                <textFieldExpression class="java.lang.String">$P{header_column_id}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="50" y="0" width="250" height="25" ></reportElement>
+                <textElement verticalAlignment="Middle" textAlignment="Center"/>
+                <textFieldExpression class="java.lang.String">$P{header_column_name}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="300" y="0" width="100" height="25" ></reportElement>
+                <textElement verticalAlignment="Middle" textAlignment="Center"/>
+                <textFieldExpression class="java.lang.String">$P{header_column_jabatan}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="400" y="0" width="100" height="25" ></reportElement>
+                <textElement verticalAlignment="Middle" textAlignment="Center"/>
+                <textFieldExpression class="java.lang.String">$P{header_column_departement}</textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="23" splitType="Stretch">
+            <staticText>
+                <reportElement mode = "Opaque" x = "0" y = "0" width = "555"
+                               height = "20" backcolor = "#FFFFFF" />
+                <box>
+                    <bottomPen lineWidth = "1.0" lineColor = "#CCCCCC" />
+                </box>
+                <textElement />
+                <text><![CDATA[]]> </text>
+            </staticText>
+
+            <textField>
+                <reportElement x="0" y="0" width="50" height="20"></reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{id}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="50" y="0" width="250" height="20"></reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{name}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="300" y="0" width="100" height="20"></reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{jabatanName}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="400" y="0" width="100" height="20"></reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{departementName}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="20">
+            <frame>
+                <reportElement isRemoveLineWhenBlank="true"  stretchType="NoStretch"  x="0" y="0" width="555" height="20"  positionType="FixRelativeToBottom" />
+                <textField>
+                    <reportElement x="0" y="0" width="555" height="20"></reportElement>
+                    <textElement textAlignment="Center">
+                        <font size="10" pdfFontName="Courier"/>
+                    </textElement>
+                    <textFieldExpression class="java.lang.String">$P{report_description}</textFieldExpression>
+                </textField>
+            </frame>
+        </band>
+    </pageFooter>
+</jasperReport>

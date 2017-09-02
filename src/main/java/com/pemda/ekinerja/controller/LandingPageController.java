@@ -6,19 +6,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by bagus on 30/08/17.
  */
 @Controller
-public class AppController {
-    public static final Logger LOGGER = LoggerFactory.getLogger(AppController.class);
+public class LandingPageController {
+    public static final Logger LOGGER = LoggerFactory.getLogger(LandingPageController.class);
 
     @RequestMapping("/")
     String home(ModelMap modal) {
         LOGGER.info("home redirect");
-        modal.addAttribute("name","AngularJS + Spring");
+        modal.addAttribute("title","E-Kinerja Web APP");
         return "index";
     }
 

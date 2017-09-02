@@ -1,5 +1,7 @@
 package com.pemda.ekinerja.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -25,10 +27,19 @@ public class Employee {
     @Column(name = "location")
     private String location;
 
+    @OneToOne
+    @JoinColumn(name = "employee_attendance_id")
+    private  EmployeeAttendance employeeAttendance;
+
     @NotNull
     @ManyToOne
     @JoinColumn(name = "jabatan_id")
     private Jabatan jabatan;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "departement_id")
+    private Departement departement;
 
     public Employee() {}
 
@@ -72,11 +83,29 @@ public class Employee {
         this.location = location;
     }
 
+    @JsonIgnore
     public Jabatan getJabatan() {
         return jabatan;
     }
 
     public void setJabatan(Jabatan jabatan) {
         this.jabatan = jabatan;
+    }
+
+    @JsonIgnore
+    public Departement getDepartement() {
+        return departement;
+    }
+
+    public void setDepartement(Departement departement) {
+        this.departement = departement;
+    }
+
+    public EmployeeAttendance getEmployeeAttendance() {
+        return employeeAttendance;
+    }
+
+    public void setEmployeeAttendance(EmployeeAttendance employeeAttendance) {
+        this.employeeAttendance = employeeAttendance;
     }
 }

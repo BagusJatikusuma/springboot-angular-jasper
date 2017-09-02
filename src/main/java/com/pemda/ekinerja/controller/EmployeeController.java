@@ -23,6 +23,8 @@ public class EmployeeController {
 
     @RequestMapping(value = "/get-employees", method = RequestMethod.GET)
     ResponseEntity<?> getEmployees() {
+        LOGGER.info("get employee");
+
         List<Employee> employees = employeeService.getAll();
 
         return new ResponseEntity<Object>(employees, HttpStatus.OK);
@@ -30,6 +32,8 @@ public class EmployeeController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     ResponseEntity<?> createEmployee(@RequestBody Employee employee) {
+        LOGGER.info("create employee");
+
         employeeService.save(employee);
 
         return new ResponseEntity<Object>("employee created", HttpStatus.CREATED);
@@ -37,13 +41,15 @@ public class EmployeeController {
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
     ResponseEntity<?> updateJabatan(@RequestBody Employee employee) {
+        LOGGER.info("update employee");
+
         employeeService.update(employee);
 
         return new ResponseEntity<Object>("employee updated", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/delete/{employeeId}", method = RequestMethod.DELETE)
-    ResponseEntity<?> deleteJabatan(@PathVariable("employeeId") String employeeId) {
+    ResponseEntity<?> deleteEmployee(@PathVariable("employeeId") String employeeId) {
         LOGGER.info("delete employee"+employeeId);
 
         employeeService.delete(employeeId);
