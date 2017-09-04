@@ -41,7 +41,9 @@
                 <textElement textAlignment="Center">
                     <font size="17" fontName="Monospaced" pdfFontName="Times-Roman"/>
                 </textElement>
-                <textFieldExpression class="java.lang.String">$P{title}</textFieldExpression>
+                <textFieldExpression class="java.lang.String"><![CDATA[
+                    "Poliklinik POLBAN"
+                ]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement
@@ -89,8 +91,20 @@
             <textField>
                 <reportElement x="400" y="0" width="100" height="25" ></reportElement>
                 <textElement verticalAlignment="Middle" textAlignment="Center"/>
-                <textFieldExpression class="java.lang.String">$P{header_column_departement}</textFieldExpression>
+                <textFieldExpression class="java.lang.String"><![CDATA[
+                    "Departement"
+                ]]></textFieldExpression>
             </textField>
+            <!--<staticText>-->
+                <!--<reportElement x="400" y="0" width="100" height="25"></reportElement>-->
+                <!--<textElement textAlignment="Center" verticalAlignment="Middle">-->
+                <!--</textElement>-->
+                <!--<text>-->
+                    <!--<![CDATA[-->
+                        <!--"Departement"-->
+                    <!--]]>-->
+                <!--</text>-->
+            <!--</staticText>-->
         </band>
     </columnHeader>
 

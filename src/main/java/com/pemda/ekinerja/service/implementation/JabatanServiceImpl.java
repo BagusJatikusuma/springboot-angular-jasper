@@ -5,6 +5,7 @@ import com.pemda.ekinerja.model.Jabatan;
 import com.pemda.ekinerja.service.JabatanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by bagus on 30/08/17.
  */
 @Service("JabatanService")
+@Transactional
 public class JabatanServiceImpl implements JabatanService {
     @Autowired
     private JabatanDao jabatanDao;

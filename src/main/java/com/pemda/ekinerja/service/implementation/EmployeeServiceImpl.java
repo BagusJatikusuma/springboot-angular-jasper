@@ -5,6 +5,7 @@ import com.pemda.ekinerja.model.Employee;
 import com.pemda.ekinerja.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by bagus on 30/08/17.
  */
 @Service("EmployeeService")
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
     @Autowired private EmployeeDao employeeDao;
 

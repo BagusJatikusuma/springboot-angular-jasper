@@ -3,7 +3,8 @@ var app = angular.module('crudApp',['ui.router','ngStorage']);
 app.constant('urls', {
     BASE: 'http://localhost:8080/',
     EMPLOYEE_SERVICE_API : 'http://localhost:8080/employee/',
-    JABATAN_SERVICE_API : 'http://localhost:8080/jabatan/'
+    JABATAN_SERVICE_API : 'http://localhost:8080/jabatan/',
+    DEPARTEMENT_SERVICE_API : 'http://localhost:8080/departement/'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
@@ -14,17 +15,18 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/',
                 templateUrl: 'partials/employee_list',
                 controller:'EmployeeController',
-                controllerAs:'ctrl',
-                resolve: {
-                    employees : function ($q, EmployeeService) {
-                        console.log('Load all employees');
-                        var deferred = $q.defer();
-
-                        EmployeeService.loadAllEmployees()
-                            .then(deferred.resolve, deferred.resolve);
-                        
-                        return deferred.promise;
-                    }
+                controllerAs:'ctrl'
+                // ,
+                // resolve: {
+                //     employees : function ($q, EmployeeService) {
+                //         console.log('Load all employees');
+                //         var deferred = $q.defer();
+                //
+                //         EmployeeService.loadAllEmployees()
+                //             .then(deferred.resolve, deferred.resolve);
+                //
+                //         return deferred.promise;
+                //     }
                     // ,
                     // jabatans : function ($q, EmployeeService) {
                     //     console.log('Load all employees');
@@ -35,7 +37,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         
                     //     return deferred.promise;
                     // }
-                }
+                // }
             });
         $urlRouterProvider.otherwise('/');
     }]);

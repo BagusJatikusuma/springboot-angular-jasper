@@ -19,8 +19,8 @@ public class EkinerjaApplication {
 //		EmailApplication emailApplication = (EmailApplication) ctx.getBean("EmailApplication");
 //		emailApplication.sendEmail();
 //
-		ReportApplication reportApplication = (ReportApplication) ctx.getBean("ReportApplication");
-		reportApplication.createReport();
+//		ReportApplication reportApplication = (ReportApplication) ctx.getBean("ReportApplication");
+//		reportApplication.createReport();
 	}
 
 }

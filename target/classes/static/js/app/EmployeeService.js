@@ -7,6 +7,8 @@ angular.module('crudApp').factory('EmployeeService',
             var factory = {
                 loadAllEmployees: loadAllEmployees,
                 getAllEmployees: getAllEmployees,
+                getAllJabatan: getAllJabatan,
+                createReport: createReport,
                 getEmployee: getEmployee,
                 createEmployee: createEmployee,
                 updateEmployee: updateEmployee,
@@ -64,13 +66,43 @@ angular.module('crudApp').factory('EmployeeService',
 
             }
 
+            function getAllJabatan() {
+                console.log('Fetching Jabatan');
+                var deferred = $q.defer();
+
+                $http.get(urls.JABATAN_SERVICE_API + 'get-jabatans')
+                    .then(
+                        function (response) {
+                            console.log('Fetched successfully');
+
+                            deferred.resolve(response.data);
+                        },
+                        function (errResponse) {
+                            console.error('Error while loading');
+
+                            deferred.reject(errResponse);
+                        }
+                    );
+
+                return deferred.promise;
+
+            }
+
             function createEmployee(employee) {
-                console.log('Creating Employee');
+                console.log('Creating Employee: \n');
+                console.log(employee.name+' \n');
+                console.log(employee.birthday+' \n');
+                console.log(employee.location+' \n');
+                console.log(employee.departement+' \n');
+                console.log(employee.jabatan+' \n');
+
                 var deferred = $q.defer();
                 
                 $http.post(urls.EMPLOYEE_SERVICE_API + 'create', employee)
                     .then(
                         function (response) {
+                            console.log('successfully create employee');
+
                             loadAllEmployees();
 
                             deferred.resolve(response.data);
@@ -153,6 +185,25 @@ angular.module('crudApp').factory('EmployeeService',
 
             function getAllJabatans(){
                 return $localStorage.jabatans;
+            }
+
+            function createReport() {
+                console.log('create report');
+                var deferred = $q.defer();
+
+                $http.get(urls.EMPLOYEE_SERVICE_API + 'create-report')
+                    .then(
+                        function (response) {
+                            console.log('Fetched successfully all jabatans');
+
+                        },
+                        function (errResponse) {
+                            console.error('Error while loading jabatans');
+
+                        }
+                    );
+
+                return deferred.promise;
             }
 
         }

@@ -16,6 +16,7 @@ angular.module('crudApp').controller('EmployeeController',
         self.updateEmployee = updateEmployee;
         self.removeEmployee = removeEmployee;
         self.editEmployee = editEmployee;
+        self.createReport = createReport;
         self.reset = reset;
 
         self.successMessage = '';
@@ -24,6 +25,8 @@ angular.module('crudApp').controller('EmployeeController',
 
         self.onlyIntegers = /^\d+$/;
         self.onlyNumbers = /^\d+([,.]\d+)?$/;
+
+        getAllJabatan();
 
         function submit() {
         	console.log('submitting');
@@ -61,6 +64,19 @@ angular.module('crudApp').controller('EmployeeController',
         			}
         		);
 
+        }
+
+        function getAllJabatan() {
+            debugger
+            EmployeeService.getAllJabatan()
+                .then(
+                    function (response) {
+                        self.jabatans = response;
+                    },
+                    function () {
+                        console.log('Gagal');
+                    }
+                )
         }
 
         function updateEmployee(employee, id) {
@@ -129,6 +145,11 @@ angular.module('crudApp').controller('EmployeeController',
         function getAllJabatans() {
         	console.log('about get all jabatans controller');
         	return EmployeeService.getAllJabatans();
+        }
+        
+        function createReport() {
+            console.log('about create report controller');
+            EmployeeService.createReport();
         }
 
 	}
